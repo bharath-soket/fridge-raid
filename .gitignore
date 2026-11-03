@@ -1,0 +1,19 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+
+# Python (fixture script)
+__pycache__/
+*.pyc
+.venv/
+
+# Node (no deps, but just in case)
+node_modules/
+
+# Env / local
+.env
+*.log

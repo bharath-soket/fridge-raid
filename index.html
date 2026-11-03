@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Fridge Raid: type what's in your fridge, get ranked recipes." />
+    <title>Fridge Raid</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1><span aria-hidden="true">🧊</span> Fridge Raid</h1>
+      <p class="tagline">Type what's in your fridge. Get recipes you can almost make.</p>
+    </header>
+
+    <main>
+      <!-- Pantry input -->
+      <section aria-labelledby="pantry-heading" class="panel">
+        <h2 id="pantry-heading" class="visually-hidden">Your ingredients</h2>
+        <div class="chips-input" id="chips-input">
+          <ul class="chips" id="chips" aria-label="Ingredients in your fridge"></ul>
+          <input
+            type="text"
+            id="pantry-input"
+            placeholder="Type an ingredient, press Enter…"
+            autocomplete="off"
+            aria-label="Add an ingredient to your fridge"
+          />
+        </div>
+        <div class="pantry-actions">
+          <button type="button" id="find-button" class="primary">Find recipes</button>
+          <button type="button" id="surprise-button" class="ghost">Surprise me</button>
+          <button type="button" id="clear-pantry" class="ghost subtle">Clear fridge</button>
+        </div>
+      </section>
+
+      <!-- Status line: per-source loading / error notices -->
+      <div id="status-area" class="status-area" role="status" aria-live="polite"></div>
+
+      <!-- Filters -->
+      <section aria-labelledby="filters-heading" class="filters" id="filters" hidden>
+        <h2 id="filters-heading" class="visually-hidden">Filters</h2>
+        <label
+          >Cuisine
+          <select id="filter-cuisine"><option value="">All</option></select>
+        </label>
+        <label
+          >Category
+          <select id="filter-category"><option value="">All</option></select>
+        </label>
+        <label
+          >Max time
+          <select id="filter-time">
+            <option value="">Any</option>
+            <option value="15">≤ 15 min</option>
+            <option value="30">≤ 30 min</option>
+            <option value="45">≤ 45 min</option>
+            <option value="60">≤ 60 min</option>
+          </select>
+        </label>
+        <label class="toggle"
+          ><input type="checkbox" id="filter-desi" /> Indian / South Asian only
+        </label>
+        <label class="toggle"
+          ><input type="checkbox" id="filter-favourites" /> Favourites only
+        </label>
+      </section>
+
+      <!-- Results -->
+      <section aria-labelledby="results-heading">
+        <h2 id="results-heading" class="results-title"></h2>
+        <div class="results-grid" id="results-grid"></div>
+      </section>
+
+      <!-- Shopping list -->
+      <section aria-labelledby="shopping-heading" class="panel shopping" id="shopping-panel" hidden>
+        <h2 id="shopping-heading">Shopping list</h2>
+        <ul id="shopping-list" class="shopping-list"></ul>
+        <div class="pantry-actions">
+          <button type="button" id="copy-shopping" class="primary">Copy list</button>
+          <button type="button" id="clear-shopping" class="ghost subtle">Clear</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Details dialog -->
+    <dialog id="recipe-dialog" class="recipe-dialog" aria-labelledby="dialog-title">
+      <article>
+        <button type="button" class="dialog-close" id="dialog-close" aria-label="Close details">×</button>
+        <div id="dialog-body"></div>
+      </article>
+    </dialog>
+
+    <footer class="footer">
+      Data from
+      <a href="https://www.themealdb.com/" target="_blank" rel="noopener noreferrer">TheMealDB</a>
+      and
+      <a href="https://dummyjson.com/docs/recipes" target="_blank" rel="noopener noreferrer">DummyJSON</a>.
+      No keys, no backend.
+    </footer>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
